@@ -22,7 +22,17 @@ python3 -m virtualenv --python=python3 venv
 . venv/bin/activate
 ```
 
-4. set the target vm ip and execute init.sh , for example
+4. Set the target vm ip and execute init.sh, for example
 ```
 IP=192.168.56.10 ./init.sh
+```
+
+5. Transfer the SSH public key to the target VM, for example
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@192.168.56.10
+```
+
+6. Run the playbook
+```
+ansible-playbook --private-key ~/.ssh/id_rsa -i cluster/hosts.yaml --become --become-user=root --flush-cache -u user kubespray/cluster.yml
 ```
