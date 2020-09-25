@@ -7,13 +7,13 @@
 1. On the target machine, create non-root user on the target ubuntu system
 
 ```
-useradd -m user
+sudo useradd -m user
 ```
 
 2. Allow the user to execute sudo without password
 
 ```
-echo 'user ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/user
+echo 'user ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/user
 ```
 
 3. On your computer, switch to the directory containing this README guide and create a virtual environment after cloning the repo
