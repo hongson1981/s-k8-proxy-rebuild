@@ -4,6 +4,7 @@
 This is an initial code that submit a file from a local directory and send it to MinIO and retrieve a MinIO URL and it send a message to the RabbitMQ queue with the MinIO URL  path and then Download the URL from MiniIO and save the file in a local directory called "Incoming"
 
 
+
 ---
 
 # Installation   
