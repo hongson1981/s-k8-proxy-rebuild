@@ -2,6 +2,7 @@
   "profiles": {
     "Minio_RobbiMQ": {
       "commandName": "Project",
+      "commandLineArgs": "-- -f test",
       "remoteDebugEnabled": false,
       "sqlDebugging": false,
       "nativeDebugging": false

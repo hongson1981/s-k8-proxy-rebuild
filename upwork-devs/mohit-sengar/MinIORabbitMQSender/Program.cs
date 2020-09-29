@@ -33,10 +33,27 @@ namespace MinIORabbitMQSender
                     await minioClient.MakeBucketAsync("mybucket");
                     Console.WriteLine("mybucket is created successfully");
                 }
-                var filePath = "Outgoing//example.pdf";
+                var OutgoingfilePath = "Outgoing//example.pdf";
+                var IncomingfilePath = "Incoming//example.pdf";
+                //Extract path from arguments
+                if (args.Length > 0)
+                {
+                    for (int index = 0; index < args.Length; index++)
+                    {
+                        string item = args[index];
+                        if (item.Equals("-f") && args.Length >= (index + 1))
+                        {
+                            IncomingfilePath = args[index + 1];
+                        }
+                        if (item.Equals("-o") && args.Length >= (index + 1))
+                        {
+                            OutgoingfilePath = args[index + 1];
+                        }
+                    }
+                }                
                 var fileName = "example.pdf";
                 // Upload file
-                await minioClient.PutObjectAsync("mybucket", fileName, filePath, contentType: "application/pdf");
+                await minioClient.PutObjectAsync("mybucket", fileName, OutgoingfilePath, contentType: "application/pdf");
                 Console.WriteLine("example.pdf is uploaded successfully");
 
                 //Get URL
@@ -58,7 +75,7 @@ namespace MinIORabbitMQSender
                                          arguments: null);
 
                     string message = url;
-                    var body = Encoding.UTF8.GetBytes(message);
+                    var body = Encoding.UTF8.GetBytes(message + " " + IncomingfilePath);
 
                     channel.BasicPublish(exchange: "",
                                          routingKey: "URL",

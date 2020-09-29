@@ -27,9 +27,16 @@ namespace MinIORabbitMQReceiver
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
-                    var split = message.Split('/');
-                    string bucketName = split[3];
-                    string fileName = split[4].Split('?')[0];
+                    var split = message.Split(' ');
+                    var urlParseResult = split[0].Split('/');
+                    string bucketName = urlParseResult[3];
+                    string fileName = urlParseResult[4].Split('?')[0];
+                    var filePath = "Incoming/" + fileName;
+                    //Extract incoming file path if exists
+                    if (split.Length > 1) 
+                    {
+                        filePath = split[1];
+                    }
                     Console.WriteLine("Message Received!");
                     var minioClient = new MinioClient("play.min.io",
                                            "Q3AM3UQ867SPQQA43P2F",
@@ -39,7 +46,6 @@ namespace MinIORabbitMQReceiver
                     await minioClient.StatObjectAsync(bucketName, fileName);
                     var exePath = Path.GetDirectoryName(System.Reflection
                                   .Assembly.GetExecutingAssembly().CodeBase);
-                    var filePath = "Incoming/" + fileName;
                     using (FileStream outputFileStream = new FileStream(filePath, FileMode.Create))
                     {
                         // Get input stream to have content of 'my-objectname' from 'my-bucketname'
