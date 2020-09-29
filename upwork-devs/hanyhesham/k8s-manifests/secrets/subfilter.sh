@@ -1,1 +1,1 @@
-SUBFILTER=( .gov.uk,.gov.uk.glasswall-icap.com:30900  .amazonaws.com,.amazonaws.com.glasswall-icap.com:30900 )
+SUBFILTER=( .gov.uk,.gov.uk.glasswall-icap.com  .amazonaws.com,.amazonaws.com.glasswall-icap.com )

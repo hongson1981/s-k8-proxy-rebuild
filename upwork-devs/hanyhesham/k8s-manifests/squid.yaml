@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: squid 
-        image: squid-reverse:v1
+        image: hheshamrepo/squid-reverse:v1
         imagePullPolicy: "IfNotPresent"
         env:
           - name: ALLOWED_DOMAINS
@@ -34,7 +34,6 @@ metadata:
   name: squid
   namespace: reverse-proxy
 spec:
-  type: NodePort
   selector:
     app: squid
   ports:

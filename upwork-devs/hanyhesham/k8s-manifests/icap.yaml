@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: icap
-        image: docker.pkg.github.com/hanyhesham/s-k8-proxy-rebuild/gw-icap:latest
+        image: hheshamrepo/gw-icap:v1 
         imagePullPolicy: "IfNotPresent"
 ---
 apiVersion: v1

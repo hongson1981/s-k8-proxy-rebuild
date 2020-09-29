@@ -8,7 +8,7 @@ proxy_set_header Host \$host;
 proxy_set_header Connection \$connection;
 proxy_set_header X-Real-IP \$remote_addr;
 proxy_set_header Accept-Encoding "";
-proxy_pass http://127.0.0.1:8080;
+proxy_pass http://squid:8080;
 EOF
 
 for i in "${SUBFILTER[@]}" ;  do

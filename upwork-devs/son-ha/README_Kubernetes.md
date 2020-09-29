@@ -26,19 +26,21 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 ### Install Minikube
- > curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
-  && chmod +x minikube
- > sudo mkdir -p /usr/local/bin/
- > sudo install minikube /usr/local/bin/
- start minikube by command :
- > minikube start
-
+```
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+&& chmod +x minikube
+sudo mkdir -p /usr/local/bin/
+sudo install minikube /usr/local/bin/
+start minikube by command :
+minikube start
+```
 ### Install Kompose
- # Linux
- > curl -L https://github.com/kubernetes/kompose/releases/download/v1.21.0/kompose-linux-amd64 -o kompose
- > chmod +x kompose
- > sudo mv ./kompose /usr/local/bin/kompose
-
+Linux
+```
+  curl -L https://github.com/kubernetes/kompose/releases/download/v1.21.0/kompose-linux-amd64 -o kompose
+  chmod +x kompose
+  sudo mv ./kompose /usr/local/bin/kompose
+```
 ## Preparing source code
 
 0. Clone repository and goto the stable-src
