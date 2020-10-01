@@ -158,6 +158,12 @@ Some issues occured during pods creation, I need to edit the Dockerfiles for Squ
 
 ### Deploy apps manifests
 
+
+We need to create a secret for github packages login as following:
+
+`kubectl create secret docker-registry regcred --docker-server=docker.pkg.github.com --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+`
+
 In order to deploy our stack to the K8s cluster, we need to apply some manifests as following:
 
 ```
