@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinIORabbitMQReceiver", "MinIORabbitMQReceiver\MinIORabbitMQReceiver.csproj", "{959025EF-C8D3-4603-8A8F-CA5030E71477}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinIORabbitMQSender", "MinIORabbitMQSender\MinIORabbitMQSender.csproj", "{F151B9E3-FA77-4722-B3F7-8C83CF837A28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinIO_RabbitMQ", "MinIORabbitMQ\MinIO_RabbitMQ.csproj", "{3C951A78-1ED3-4083-BEB2-54A436E46A8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{959025EF-C8D3-4603-8A8F-CA5030E71477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{959025EF-C8D3-4603-8A8F-CA5030E71477}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{959025EF-C8D3-4603-8A8F-CA5030E71477}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{959025EF-C8D3-4603-8A8F-CA5030E71477}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F151B9E3-FA77-4722-B3F7-8C83CF837A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F151B9E3-FA77-4722-B3F7-8C83CF837A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F151B9E3-FA77-4722-B3F7-8C83CF837A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F151B9E3-FA77-4722-B3F7-8C83CF837A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C951A78-1ED3-4083-BEB2-54A436E46A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C951A78-1ED3-4083-BEB2-54A436E46A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C951A78-1ED3-4083-BEB2-54A436E46A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C951A78-1ED3-4083-BEB2-54A436E46A8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
