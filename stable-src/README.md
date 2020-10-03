@@ -109,7 +109,6 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 ```
 git clone https://github.com/k8-proxy/k8-reverse-proxy.git
-git checkout pranay/k8s-setup branch
 cd stable-src
 ```
 
