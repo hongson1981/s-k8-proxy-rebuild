@@ -1,0 +1,125 @@
+# Default values for chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  nginx:
+    repository: pranaysahith/reverse-proxy-nginx
+    tag: 0.0.1
+    pullPolicy: IfNotPresent
+  squid:
+    repository: pranaysahith/reverse-proxy-squid
+    tag: 0.0.2
+    pullPolicy: IfNotPresent
+  icap:
+    repository: pranaysahith/reverse-proxy-c-icap
+    tag: 0.0.1
+    pullPolicy: IfNotPresent
+podAnnotations: {}
+application:
+  nginx:
+    secretName: reverse-proxy-nginx
+    env:
+      ALLOWED_DOMAINS: gov.uk.glasswall-icap.com,www.gov.uk.glasswall-icap.com,assets.publishing.service.gov.uk.glasswall-icap.com
+      ROOT_DOMAIN: glasswall-icap.com
+      SUBFILTER_ENV: ".gov.uk,.gov.uk.glasswall-icap.com  .amazonaws.com,.amazonaws.com.glasswall-icap.com"
+    secrets: {}
+  squid:
+    secretName: reverse-proxy-squid
+    env:
+      ALLOWED_DOMAINS: gov.uk.glasswall-icap.com,www.gov.uk.glasswall-icap.com,assets.publishing.service.gov.uk.glasswall-icap.com
+      ROOT_DOMAIN: glasswall-icap.com
+    secrets: {}
+  icap:
+    secretName: reverse-proxy-icap
+    env: {}
+    secrets: {}
+
+service:
+  nginx:
+    enabled: true
+    annotations: {}
+    name: nginx
+    type: ClusterIP
+    additionalHosts:
+    commonName:
+    externalPort: 443
+    internalPort: 443
+  squid:
+    enabled: true
+    annotations: {}
+    name: squid
+    type: ClusterIP
+    additionalHosts:
+    commonName:
+    externalPort: 8080
+    internalPort: 8080
+  icap:
+    enabled: true
+    annotations: {}
+    name: icap
+    type: ClusterIP
+    additionalHosts:
+    commonName:
+    externalPort: 1344
+    internalPort: 1344
+ingress:
+  tls:
+    enabled: true
+    secretName: ""
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: "nginx"
+  path: /
+livenessProbe:
+  path: "/"
+  initialDelaySeconds: 30
+  timeoutSeconds: 3
+  scheme: "HTTP"
+readinessProbe:
+  path: "/"
+  initialDelaySeconds: 30
+  timeoutSeconds: 3
+  scheme: "HTTP"
+
+resources:
+  nginx:
+    limits:
+      cpu: 250m
+      memory: 250Mi
+    requests:
+      cpu: 250m
+      memory: 250Mi
+  squid:
+    limits:
+      cpu: 250m
+      memory: 500Mi
+    requests:
+      cpu: 250m
+      memory: 500Mi
+  icap:
+    limits:
+      cpu: 250m
+      memory: 500Mi
+    requests:
+      cpu: 250m
+      memory: 500Mi
+
+#
+podDisruptionBudget:
+  enabled: false
+  # minAvailable: 1
+  maxUnavailable: 1
+scale:
+  nginx:
+    enabled: false
+    MinReplicaCount: 1
+    MaxReplicaCount: 2
+  squid:
+    enabled: false
+    MinReplicaCount: 1
+    MaxReplicaCount: 2
+  icap:
+    enabled: false
+    MinReplicaCount: 1
+    MaxReplicaCount: 2
