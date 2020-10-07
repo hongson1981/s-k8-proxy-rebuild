@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "MinIO_RabbitMQ": {
+      "commandName": "Project",
+      "commandLineArgs": "-- -f test",
+      "remoteDebugEnabled": false,
+      "sqlDebugging": false,
+      "nativeDebugging": false
+    }
+  }
+}
