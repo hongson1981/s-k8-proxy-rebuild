@@ -6,7 +6,7 @@
 
 Rancher is a container management platform built for organizations that deploy containers in production. Rancher makes it easy to run Kubernetes everywhere, meet IT requirements, and empower DevOps teams.
 
-### Installation
+### Installation steps to deploy K8s cluster on EC2 instances using Rancher
 
 1. Deploy rancher server using docker
 
@@ -19,7 +19,7 @@ docker run -d --restart=unless-stopped \
 
 Once the docker is running, it takes few minutes to initialize the server. Once the server is started, access the rancher UI on localhost
 
-2. Setup cloud credentials
+2. Setup AWS cloud credentials
 
 Under profile, select "Cloud Credentials" and click on "Add Cloud Credentails". Populate the details of region, access key, secret key, credentails name and save it.
 
