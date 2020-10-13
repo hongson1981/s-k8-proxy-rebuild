@@ -72,7 +72,6 @@ Use this file to connect to the cluster by running below commands
 
 ```
 git clone https://github.com/k8-proxy/k8-reverse-proxy.git
-git checkout pranay/k8s-setup branch
 cd stable-src
 ```
 
