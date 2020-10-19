@@ -13,7 +13,7 @@ image:
     pullPolicy: IfNotPresent
   icap:
     repository: pranaysahith/reverse-proxy-c-icap
-    tag: 0.0.1
+    tag: 0.0.2
     pullPolicy: IfNotPresent
 podAnnotations: {}
 application:

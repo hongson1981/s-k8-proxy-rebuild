@@ -84,8 +84,9 @@ docker push pranaysahith/reverse-proxy-nginx:0.0.1
 docker build squid -t pranaysahith/reverse-proxy-squid:0.0.1
 docker push pranaysahith/reverse-proxy-squid:0.0.1
 
+wget -O c-icap/Glasswall-Rebuild-SDK-Evaluation/Linux/Library/libglasswall.classic.so https://raw.githubusercontent.com/filetrust/Glasswall-Rebuild-SDK-Evaluation/master/Linux/Library/libglasswall.classic.so # Get latest evaluation build of GW Rebuild engine
 docker build c-icap -t pranaysahith/reverse-proxy-c-icap:0.0.1
-docker push pranaysahith/reverse-proxy-squid:0.0.1
+docker push pranaysahith/reverse-proxy-c-icap:0.0.1
 ```
 
 ### Deploy to Kubernetes
@@ -101,6 +102,8 @@ kubectl get pods
 ```
 
 Once all the pods are running, forward the traffic from local machine to nginx service.
+If the below command gives permission error to bind the port 443, please run the command with `sudo`
+
 ```
 kubectl port-forward svc/reverse-proxy-reverse-proxy-nginx 443:443
 ```
