@@ -68,7 +68,7 @@ Use this file to connect to the cluster by running below commands
 ## Apps deployment
 
 
-### Clone the https://github.com/k8-proxy/k8-reverse-proxy repository and checkout `pranay-k8s-test` branch
+### Clone the https://github.com/k8-proxy/k8-reverse-proxy repository and checkout `develop` branch
 
 ```
 git clone https://github.com/k8-proxy/k8-reverse-proxy.git
@@ -89,7 +89,8 @@ docker push pranaysahith/reverse-proxy-squid:0.0.1
 ```
 
 ### Deploy to Kubernetes
-From this directory run below commands to deploy the helm chart. If you don't want to build the docker images, it uses the exisiting images given in chart/values.yaml
+Come back to s-k8-proxy-rebuild repository.
+From stable-src directory of s-k8-proxy-rebuild repo, run below commands to deploy the helm chart. If you don't want to build the docker images, it uses the exisiting images given in chart/values.yaml
 
 ```
 helm upgrade --install reverse-proxy chart/
