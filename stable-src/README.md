@@ -12,12 +12,12 @@ Rancher is a container management platform built for organizations that deploy c
 
 ```
 docker run -d --restart=unless-stopped \
-  -p 80:80 -p 443:443 \
+  -p 8080:80 -p 1443:443 \
   --privileged \
   rancher/rancher:latest
 ```
 
-Once the docker is running, it takes few minutes to initialize the server. Once the server is started, access the rancher UI on localhost
+Once the docker is running, it takes few minutes to initialize the server. Once the server is started, access the rancher UI on https://localhost:1443
 
 2. Setup AWS cloud credentials
 
