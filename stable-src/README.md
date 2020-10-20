@@ -68,7 +68,7 @@ Use this file to connect to the cluster by running below commands
 ## Apps deployment
 
 
-### Clone the https://github.com/k8-proxy/k8-reverse-proxy repository and checkout `pranay-k8s-test` branch
+### Clone the https://github.com/k8-proxy/k8-reverse-proxy repository and checkout `develop` branch
 
 ```
 git clone https://github.com/k8-proxy/k8-reverse-proxy.git
