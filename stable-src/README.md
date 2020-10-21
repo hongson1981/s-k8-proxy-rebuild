@@ -102,7 +102,7 @@ Update the below command with the image name and image tag used in above step.
 
 Image tag "0.0.1" in below command is just used as an example. Update below command with the same image tag used in above step(Build and push).
 
-From `stable-src` directory run below commands to deploy the helm chart.
+From `stable-src` directory of `s-k8-proxy-rebuild` repository run below commands to deploy the helm chart.
 
 ```
 helm upgrade --install \
