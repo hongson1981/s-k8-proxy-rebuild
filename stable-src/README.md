@@ -75,25 +75,44 @@ git clone https://github.com/k8-proxy/k8-reverse-proxy.git
 cd stable-src
 ```
 
-### Build and push docker images to a container registry. Below example commands show pushing docker images to dockerhub.
+### Build and push docker images to a container registry. Below are example commands to show how to build and push docker images to docker registry.
+
+Replace the <docker registry> with the docker registry or the dockerhub username in below commands
+
+Login to the docker registry from the terminal before running below commands to push the images to docker registry.
+
+Below is example command to login to the docker registry(dockerhub)
+
+`docker login -u <username> -p <password>`
 
 ```
-docker build nginx -t pranaysahith/reverse-proxy-nginx:0.0.1
-docker push pranaysahith/reverse-proxy-nginx:0.0.1
+docker build nginx -t <docker registry>/reverse-proxy-nginx:0.0.1
+docker push <docker registry>/reverse-proxy-nginx:0.0.1
 
-docker build squid -t pranaysahith/reverse-proxy-squid:0.0.1
-docker push pranaysahith/reverse-proxy-squid:0.0.1
+docker build squid -t <docker registry>/reverse-proxy-squid:0.0.1
+docker push <docker registry>/reverse-proxy-squid:0.0.1
 
-docker build c-icap -t pranaysahith/reverse-proxy-c-icap:0.0.1
-docker push pranaysahith/reverse-proxy-squid:0.0.1
+wget -O c-icap/Glasswall-Rebuild-SDK-Evaluation/Linux/Library/libglasswall.classic.so https://raw.githubusercontent.com/filetrust/Glasswall-Rebuild-SDK-Evaluation/master/Linux/Library/libglasswall.classic.so # Get latest evaluation build of GW Rebuild engine
+docker build c-icap -t <docker registry>/reverse-proxy-c-icap:0.0.1
+docker push <docker registry>/reverse-proxy-c-icap:0.0.1
 ```
 
 ### Deploy to Kubernetes
-Come back to s-k8-proxy-rebuild repository.
-From stable-src directory of s-k8-proxy-rebuild repo, run below commands to deploy the helm chart. If you don't want to build the docker images, it uses the exisiting images given in chart/values.yaml
+Update the below command with the image name and image tag used in above step.
+
+Image tag "0.0.1" in below command is just used as an example. Update below command with the same image tag used in above step(Build and push).
+
+From `stable-src` directory of `s-k8-proxy-rebuild` repository run below commands to deploy the helm chart.
 
 ```
-helm upgrade --install reverse-proxy chart/
+helm upgrade --install \
+--set image.nginx.repository=<docker registry>/reverse-proxy-nginx \
+--set image.nginx.tag=0.0.1 \
+--set image.squid.repository=<docker registry>/reverse-proxy-squid \
+--set image.squid.tag=0.0.1 \
+--set image.icap.repository=<docker registry>/reverse-proxy-c-icap \
+--set image.icap.tag=0.0.1 \
+reverse-proxy chart/
 ```
 
 Verify that all pods(nginx, squid, icap) are running by executing below command
@@ -102,6 +121,8 @@ kubectl get pods
 ```
 
 Once all the pods are running, forward the traffic from local machine to nginx service.
+If the below command gives permission error to bind the port 443, please run the command with `sudo`
+
 ```
 kubectl port-forward svc/reverse-proxy-reverse-proxy-nginx 443:443
 ```

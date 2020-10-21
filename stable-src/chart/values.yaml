@@ -4,15 +4,15 @@
 replicaCount: 1
 image:
   nginx:
-    repository: pranaysahith/reverse-proxy-nginx
+    repository: <docker registry>/reverse-proxy-nginx
     tag: 0.0.1
     pullPolicy: IfNotPresent
   squid:
-    repository: pranaysahith/reverse-proxy-squid
-    tag: 0.0.2
+    repository: <docker registry>/reverse-proxy-squid
+    tag: 0.0.1
     pullPolicy: IfNotPresent
   icap:
-    repository: pranaysahith/reverse-proxy-c-icap
+    repository: <docker registry>/reverse-proxy-c-icap
     tag: 0.0.1
     pullPolicy: IfNotPresent
 podAnnotations: {}
